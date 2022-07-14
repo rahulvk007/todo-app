@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "zbc_portal_project"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+Django = "^4.0.5"
+Pillow = "^9.2.0"
+tomlkit = "^0.11.0"
+django-autoslug = "^1.9.8"
+django-crispy-forms = "^1.14.0"
+django-tinymce = "^3.4.0"
+social-auth-app-django = "^5.0.0"
+django-environ = "^0.9.0"
+python-environ = "^0.4.54"
+celery = "^5.2.7"
+django-celery-beat = "^2.3.0"
+django-celery-results = "^2.4.0"
+redis = "^4.3.4"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

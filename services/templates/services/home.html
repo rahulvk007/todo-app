@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class = "container">
+    <h1 class = "text-center">Your Tasks</h1>
+    <hr/>
+    <div class = "row">
+        {% for progress in Progress %}
+        <div class = "col-md-4">
+            <div class="card text-white bg-secondary mb-3" style="margin-bottom:20px;">
+                <div class="card-body">
+                  <h4 class="card-title">{{progress.assigned_work.title}}</h4>
+                  <h6 class="card-subtitle mb-2 text-muted">Deadline: {{progress.assigned_work.deadline}}</h6>
+                  <hr/>
+                  <p class = "card-text">Assigned By : {{progress.assigned_work.created_by.profile.role}} {% if progress.assigned_work.created_by.profile.team %}of {{progress.assigned_work.created_by.profile.team}}{% endif %}</p>
+                  <div class = "d-inline-block py-2">
+                    <a class="btn btn-secondary" href = "{% url 'view_work' progress.assigned_work.slug progress.assigned_work.id %}" type="button" style="margin-bottom:10px;background: linear-gradient(146deg, #30E8BF, #FF8235);">View Work</a>
+                    <a class="btn btn-secondary" href = "{% url 'update_progress' progress.id %}" type="button" style="margin-bottom:10px;background: linear-gradient(146deg, #30E8BF, #FF8235);">Update Progress</a>
+                  </div>
+                </div>
+              </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

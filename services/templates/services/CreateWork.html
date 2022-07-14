@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class = "container">
+    <h1 class = "text-center">Assign Work</h1>
+    <hr/>
+    <form method = "POST" enctype = "multipart/form-data">
+        {% csrf_token %}
+        {{form.media}}
+        {{form|crispy}}
+        <div class = "d-inline-block py-2">
+            <button class = "btn btn-outline-success" type = "submit">Assign</button>
+        </div>
+    </form>
+</div>
+<script>
+    $(document).ready(function() { 
+        $(function () {
+            $('#id_deadline').datepicker({ dateFormat: 'yy-mm-dd' });
+        });
+    })
+  </script>
+{% endblock %}

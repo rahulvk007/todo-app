@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+<div class = "container">
+    <h1 class = "text-center">{{progress.assigned_work.title}}</h1>
+    <hr/>
+    <p>Description</p>
+    <div class = "content-container container-fluid alert alert-secondary  overflow-auto">
+        {{progress.assigned_work.media}}
+        {{progress.assigned_work.description|safe}}
+    </div>
+    <form method = "POST" enctype = "multipart/form-data">
+        {{form|crispy}}
+        <div class = "d-inline-block py-2">
+            {% csrf_token %}
+            <button class = "btn btn-outline-secondary" style =  "color:white;" type = "submit">Submit</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

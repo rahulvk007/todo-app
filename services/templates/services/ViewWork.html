@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class = "container">
+    <h1 class = "text-center">{{work.title}}</h1>
+    <hr/>
+    <p>Description</p>
+    <div class = "content-container container-fluid alert alert-secondary  overflow-auto">
+        {{work.media}}
+        {{work.description|safe}}
+    </div>
+    <p>Assigned To</p>
+    <ul class="list-group">
+        {% for user in work.assigned_to.all %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            {{user.username}}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
