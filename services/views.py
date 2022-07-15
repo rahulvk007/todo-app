@@ -1,7 +1,9 @@
+import profile
 from . forms import *
 from . models import *
+from . models import Profile
 from . mixins import *
-from django.http import Http404
+from django.http import Http404, HttpResponse
 from django.views import generic
 from django.contrib import messages
 from django.urls import reverse_lazy
@@ -13,6 +15,13 @@ from django.contrib.auth.decorators import login_required,user_passes_test
 
 # Create your views here.
 #Class Based Views
+
+def display_profile(request):
+    p = Profile.objects.filter(user_id=request.user.id)
+    if p:
+        res = {"p":p[0]}
+        return HttpResponse(p[0].name)
+
 class WorkCreateView(UserPermissionMixin,SuccessMessageMixin,generic.CreateView):
     form_class = WorkCreateForm
     template_name = "services/CreateWork.html"

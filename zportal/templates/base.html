@@ -33,7 +33,7 @@
                       <a class="nav-link" href="#">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">Profile</a>
+                      <a class="nav-link" href="/profile">Profile</a>
                     </li>
                     {% if user.is_superuser or user.profile.role == "President" %}
                     <li class="nav-item dropdown">

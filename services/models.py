@@ -1,3 +1,4 @@
+from unittest.util import _MAX_LENGTH
 from . choices import *
 from django.db import models
 from autoslug import AutoSlugField
@@ -9,12 +10,17 @@ from django.db.models.signals import post_save,m2m_changed
 
 
 # Create your models here.
+
+
 class Profile(models.Model):
+    name = models.CharField(max_length=100)
     user = models.OneToOneField(User,on_delete = models.CASCADE)
     avatar = models.ImageField(upload_to = 'profile_pic/',blank = True)
     role = models.CharField(max_length = 200,choices = ROLE_CHOICES,blank = True)
     team = models.CharField(max_length = 200,choices = TEAM_CHOICES,blank = True)
     slug = AutoSlugField(populate_from='user',unique = True)
+    Skillset = models.CharField(max_length=500)
+    description = models.TextField()
     def __str__(self):
         return self.user.email
 class Work(models.Model):
