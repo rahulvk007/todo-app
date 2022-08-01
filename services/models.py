@@ -15,6 +15,8 @@ from django.db.models.signals import post_save,m2m_changed
 class Profile(models.Model):
     name = models.CharField(max_length=100)
     user = models.OneToOneField(User,on_delete = models.CASCADE)
+    email = models.EmailField()
+    dept = models.CharField(max_length=100)
     avatar = models.ImageField(upload_to = 'profile_pic/',blank = True)
     role = models.CharField(max_length = 200,choices = ROLE_CHOICES,blank = True)
     team = models.CharField(max_length = 200,choices = TEAM_CHOICES,blank = True)

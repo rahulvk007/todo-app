@@ -132,6 +132,9 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'zportal/static'),
 ]
 
+MEDIA_URL = '/media/' 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
+
 #Messages
 MESSAGE_TAGS = {
     messages.DEBUG: 'alert-secondary',

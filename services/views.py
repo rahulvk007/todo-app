@@ -19,8 +19,8 @@ from django.contrib.auth.decorators import login_required,user_passes_test
 def display_profile(request):
     p = Profile.objects.filter(user_id=request.user.id)
     if p:
-        res = {"p":p[0]}
-        return HttpResponse(p[0].name)
+        res = p[0]
+        return render(request,"profile/index.html",{"res":res})
 
 class WorkCreateView(UserPermissionMixin,SuccessMessageMixin,generic.CreateView):
     form_class = WorkCreateForm
