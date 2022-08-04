@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     #Celery
     'django_celery_beat',
     'django_celery_results',
+    'taggit',
 ]
 
 MIDDLEWARE = [

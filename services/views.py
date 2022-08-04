@@ -16,11 +16,14 @@ from django.contrib.auth.decorators import login_required,user_passes_test
 # Create your views here.
 #Class Based Views
 
-def display_profile(request):
-    p = Profile.objects.filter(user_id=request.user.id)
+def display_profile(request, slug):
+    p = get_object_or_404(Profile, slug=slug)
     if p:
-        res = p[0]
-        return render(request,"profile/index.html",{"res":res})
+        """ res = p[0]
+        k = res.Skillset
+        skills = k.split(',')
+        res.Skillset=skills"""
+        return render(request,"profile/index.html",{"res":p})
 
 class WorkCreateView(UserPermissionMixin,SuccessMessageMixin,generic.CreateView):
     form_class = WorkCreateForm
